@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Model ağırlıkları (Roboflow'dan / eğitimden indirilir; boyutları büyüktür)
+*.pt
+*.onnx
+*.engine
+*.tflite
+
+# Kamera kalibrasyonu (tools/calibrate_camera.py üretir; cihaza özeldir)
+config/camera_calib.npz
+
+# Roboflow indirme geçici/deneme klasörleri
+veri/_roboflow_tmp/
+veri/_roboflow/
+
+# Veri seti görüntüleri/etiketleri (Roboflow'dan indirilir; yarışma dağıtımına dahil değil)
+veri/images/train/
+veri/images/val/
+veri/labels/train/
+veri/labels/val/
+
+# IDE / işletim sistemi
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
