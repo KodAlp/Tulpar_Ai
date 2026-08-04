@@ -1,0 +1,42 @@
+# ÇELİKKUBBE - YOLO26s eğitim artırma (augmentation) hiperparametreleri
+#
+# Üretildi: .claude/skills/senior-computer-vision/scripts/dataset_pipeline_builder.py
+#   augment-config --task detection --intensity medium --framework ultralytics
+# çıktısı taban alınıp aşağıdaki nedenlerle elle ayarlandı (bkz. .claude/skills/
+# Model_egit/Model_egit.md "Veri seti" bölümü):
+#
+# - flipud 0.1 -> 0.0: hedef maketleri sahada asla baş aşağı görünmez (taret
+#   0-60° yükseliş açısında çalışır); dikey çevirme fiziksel olarak imkansız
+#   bir yönelim öğretir.
+# - scale 0.2 -> 0.5: yarışma mesafe aralığı 0-15 m çok geniş görünür boyut
+#   oranına yol açar (yakın/uzak arası ~3x); daha güçlü ölçek jiterı bu aralığı
+#   daha iyi kapsar.
+# - degrees 15 -> 10: taret/kamera genelde yatay kurulur, aşırı döndürme
+#   gerçekçi olmayan açı öğretir.
+# - mosaic 0.0 -> 1.0, mixup 0.0 -> 0.1: küçük/orta veri setinde (Model_egit.md
+#   "sınıf başına en az birkaç yüz kare" uyarısı) arka plan çeşitliliğini ve
+#   genelleme gücünü artırır; close_mosaic ile son epoklarda kapatılır
+#   (Ultralytics standart pratiği - keskin/gerçekçi son-epoch verisiyle biter).
+# - hsv_h/hsv_s/hsv_v BİLEREK korundu: her sınıfın hem kırmızı (düşman) hem
+#   mavi (dost) boyalı örneği toplanacağı için (Model_egit.md), dedektörün
+#   sınıfı renkten bağımsız öğrenmesi hedefleniyor - IFF renk ayrımı ayrı bir
+#   modülün işi (src/vision/color_iff.py), dedektörün işi değil.
+#
+# Kullanım:
+#   yolo detect train model=yolo26s.pt data=veri/data.yaml imgsz=640 epochs=150 \
+#        batch=16 patience=30 cfg=veri/hyp.yaml
+
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 10.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+mosaic: 1.0
+close_mosaic: 10
+mixup: 0.1
+copy_paste: 0.0

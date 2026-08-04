@@ -1,0 +1,14 @@
+# ÇELİKKUBBE - Python bağımlılıkları (Python 3.12)
+ultralytics>=8.3          # YOLO26 resmi paketi (yolo26s.pt otomatik indirilir)
+opencv-python>=4.8
+numpy
+pyserial>=3.5
+PyQt5>=5.11.3
+PyYAML
+roboflow             # tools/roboflow_download.py için (Roboflow'dan veri seti indirme)
+# GPU (RTX 5060) için torch'u CUDA ile kurun:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+
+# Geliştirme/test (yalnızca tests/ için gerekli, yarışma dağıtımına dahil değil):
+#   pip install pytest
+#   pytest -q

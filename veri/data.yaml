@@ -1,0 +1,30 @@
+# ÇELİKKUBBE - YOLO26s eğitim veri seti tanımı
+#
+# Yerleşim:
+#   veri/images/train/*.jpg (+val)
+#   veri/labels/train/*.txt (+val)  - aynı dosya adı, YOLO format:
+#     class_id x_center y_center width height   (hepsi 0-1 normalize)
+#
+# names sırası config/config.yaml -> model.classes ile BİREBİR aynı olmalı;
+# aksi halde mesafe (target_sizes_m) ve Aşama-3 mesafe pencereleri
+# (engagement.distance_windows) yanlış sınıfla eşleşir. Çalışma zamanında
+# dedektör bu dosyadan eğitilen modelin kendi names sözlüğünü esas alır
+# (src/vision/detector.py:_names()).
+#
+# Eğitim: yolo detect train model=yolo26s.pt data=veri/data.yaml imgsz=640 epochs=150
+#
+# 'path' kasıtlı olarak boş bırakılmıştır: Ultralytics relative 'path' değerini
+# çalışma dizinine (cwd) göre çözer, data.yaml'ın kendi klasörüne göre DEĞİL.
+# Boş bırakılırsa dataset kökü otomatik olarak bu dosyanın bulunduğu klasür olur
+# (veri/) - hangi dizinden 'yolo' komutu çalıştırılırsa çalıştırılsın doğru sonuç
+# verir. 'path: .' veya 'path: veri' YAZMAYIN; cwd'ye bağlı olarak yanlış dizine
+# (ör. repo kökü/images/train) çözülür.
+
+train: images/train
+val: images/val
+
+names:
+  0: f16
+  1: helikopter
+  2: fuze
+  3: iha

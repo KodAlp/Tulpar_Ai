@@ -1,0 +1,85 @@
+# ÇELİKKUBBE Hava Savunma Sistemi - Yapılandırma
+# KTR raporundaki değerlere göre ayarlanmıştır.
+
+camera:
+  index: 0                 # USB kamera indeksi
+  width: 1280
+  height: 720
+  fps: 30
+  # Kalibrasyon (tools/calibrate_camera.py ile üretilir; yoksa None bırakın,
+  # lens distorsiyon düzeltmesi atlanır)
+  calibration_file: "config/camera_calib.npz"
+  focal_length_px: 950.0   # Piksel cinsinden odak uzaklığı (kalibrasyonla güncellenecek)
+
+model:
+  weights: "yolo26s.pt"    # Ultralytics YOLO26s (NMS-free, uçtan uca) - eğitim sonrası best.pt yazın
+  imgsz: 640
+  conf_threshold: 0.75     # KTR: güven skoru eşiği (varsayılan 0,75)
+  device: 0                # GPU: 0, yalnızca CPU için "cpu"
+  # Sınıf isimleri, eğitilen özel modelin data.yaml sırası ile aynı olmalı
+  classes: ["f16", "helikopter", "fuze", "iha"]
+
+# Bilinen hedef boyutları (metre) - bounding box mesafe kestirimi için.
+# Gerçek maket ölçüleriyle güncellenmeli (en uzun/karakteristik boyut).
+target_sizes_m:
+  f16: 0.50
+  helikopter: 0.45
+  fuze: 0.40
+  iha: 0.30
+
+tracking:
+  consecutive_frames: 3      # Ardışık Kare Doğrulama Filtresi (KTR Senaryo-2)
+  max_center_jump_px: 120    # Bir karede izin verilen maks. merkez sıçraması (gürültü reddi)
+  lost_timeout_s: 1.0        # Hedef bu süre görünmezse "Hedef Arama" durumuna dön
+
+kalman:
+  process_noise: 0.05        # Mesafe Kalman filtresi Q
+  measurement_noise: 1.5     # Mesafe Kalman filtresi R
+
+engagement:
+  fire_tolerance_px: 25      # Nişan toleransı: hedef merkezi ± bu pencere içindeyse ateş
+  fire_hold_frames: 5        # Tolerans penceresinde bu kadar kare sabit kalınca ateş
+  kill_confirm_lost_frames: 10  # Ateş sonrası hedef bu kadar kare kayıpsa imha kabul
+  # Aşama-3 hedef tipine göre uygun imha mesafeleri (metre) [min, max]
+  distance_windows:
+    f16: [10.0, 15.0]
+    helikopter: [5.0, 15.0]
+    fuze: [5.0, 15.0]
+    iha: [0.0, 15.0]
+
+iff:  # Dost/Düşman ayrımı (Aşama-3): renk tabanlı
+  enabled_stage3: true
+  min_color_ratio: 0.12      # bbox içinde ilgili renk piksel oranı eşiği
+  red_h_ranges: [[0, 10], [170, 180]]   # HSV H aralıkları (kırmızı = düşman)
+  blue_h_range: [100, 130]              # (mavi = dost)
+  s_min: 80
+  v_min: 60
+
+safety:
+  # Atışa yasak alan: pan açısı bu aralığın DIŞINDA ise ateş komutu reddedilir
+  fire_allowed_pan_deg: [-60.0, 60.0]
+  # Harekete yasak alan: servo bu sınırların dışına asla sürülmez
+  pan_limits_deg: [-135.0, 135.0]
+  tilt_limits_deg: [0.0, 60.0]
+
+serial:
+  port: "COM5"               # Linux: /dev/ttyACM0
+  baudrate: 115200
+  keepalive_period_s: 0.030  # KTR: ~30 ms'de bir Keep-Alive
+  # Arduino tarafındaki watchdog 100 ms (firmware'de tanımlı)
+
+servo:
+  # Savox SB2236MG: 800-2200 us darbe aralığı, 7.4V'ta 0.13 s/60°
+  pwm_min_us: 800
+  pwm_max_us: 2200
+  pan_range_deg: 270.0
+  tilt_range_deg: 90.0
+
+pid:  # Arduino tarafında da aynı katsayılar kullanılır (firmware sabitleri)
+  pan:  {kp: 0.045, ki: 0.002, kd: 0.010}
+  tilt: {kp: 0.045, ki: 0.002, kd: 0.010}
+
+battery:
+  cells: 2                   # 2S Li-Po 7.4V
+  warn_v_per_cell: 3.4       # KTR: uyarı eşiği
+  cutoff_v_per_cell: 3.2     # KTR: kritik kesme eşiği
