@@ -31,8 +31,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 # (API anahtarı hem buraya hem ROBOFLOW_API_KEY ortam değişkenine verilebilir)
 # ---------------------------------------------------------------------------
 API_KEY = "YOUR_API_KEY"          # https://app.roboflow.com/settings/api
-WORKSPACE = "YOUR_WORKSPACE"      # Roboflow çalışma alanı adı (URL'deki kısım)
-PROJECT = "YOUR_PROJECT"          # Roboflow proje adı (URL'deki kısım)
+WORKSPACE = "kodalp"      # Roboflow çalışma alanı adı (URL'deki kısım)
+PROJECT = "air-defense-szgowT"          # Roboflow proje adı (URL'deki kısım)
 VERSION = 1                       # Proje sürüm numarası (int)
 
 # Projenin beklediği sınıf listesi (veri/data.yaml ve config.yaml ile aynı sırada)

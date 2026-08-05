@@ -22,6 +22,9 @@ config/camera_calib.npz
 veri/_roboflow_tmp/
 veri/_roboflow/
 
+# Ham veri (Kaggle/Roboflow zip'leri vb. - büyük, repoya dahil değil)
+veri/_ham/
+
 # Veri seti görüntüleri/etiketleri (Roboflow'dan indirilir; yarışma dağıtımına dahil değil)
 veri/images/train/
 veri/images/val/
