@@ -1,0 +1,109 @@
+Tulpar AI — Eğitim Amaçlı Ticari Olmayan Kullanım Lisansı, Sürüm 1.0
+Tulpar AI — Educational Non-Commercial License, Version 1.0
+
+Telif Hakkı (c) 2026 Tulpar AI Takımı (KodAlp). Tüm hakları saklıdır.
+Copyright (c) 2026 Tulpar AI Team (KodAlp). All rights reserved.
+
+===============================================================================
+TÜRKÇE
+===============================================================================
+
+1. TANIMLAR
+   "Yazılım"; bu depodaki kaynak kodu, Arduino donanım yazılımını,
+   yapılandırma dosyalarını, belgeleri ve bunlardan türetilen her türlü
+   çalışmayı (eğitilmiş model ağırlıkları dahil) ifade eder.
+   "Eğitim Amaçlı Kullanım"; öğrenme, öğretme, ders, ödev, tez, akademik
+   araştırma ve kâr amacı gütmeyen öğrenci yarışmalarına hazırlık amacıyla
+   yapılan kullanımdır.
+
+2. VERİLEN İZİN
+   Aşağıdaki koşullara uyulması şartıyla, Yazılım'ı yalnızca Eğitim Amaçlı
+   Kullanım için ücretsiz olarak görüntüleme, indirme, çalıştırma, inceleme
+   ve kişisel/akademik çalışmalar kapsamında değiştirme izni verilir.
+
+3. YASAKLAR
+   Telif hakkı sahibinin önceden yazılı izni olmaksızın:
+   a) Yazılım'ın tamamı veya bir kısmı ticari amaçla kullanılamaz; satılamaz,
+      kiralanamaz, lisanslanamaz, ücretli bir ürün ya da hizmete dahil
+      edilemez, ücretli danışmanlık/eğitim hizmetinde kullanılamaz.
+   b) Yazılım; eğitim dışındaki herhangi bir amaçla (askeri, operasyonel,
+      kurumsal veya üretim ortamı kullanımı dahil) kullanılamaz.
+   c) Yazılım veya türevleri, başka bir yarışmaya ya da projeye kendi
+      çalışmanızmış gibi sunulamaz.
+   d) Yazılım'ın değiştirilmiş veya değiştirilmemiş kopyaları bu lisans
+      olmadan ya da farklı bir lisansla yeniden dağıtılamaz.
+
+4. KOŞULLAR
+   a) Yazılım'ın tüm kopyalarında ve önemli kısımlarında bu lisans metni ve
+      yukarıdaki telif hakkı bildirimi korunmalıdır.
+   b) Yazılım'dan yararlanan akademik veya eğitim çalışmalarında Tulpar AI
+      Takımı'na ve bu depoya atıf yapılmalıdır.
+   c) Yazılım'ın bağımlı olduğu üçüncü taraf bileşenler (ör. Ultralytics
+      YOLO — AGPL-3.0) kendi lisanslarına tabidir; bu lisans o bileşenler
+      üzerinde hak vermez. Ayrıntılar için ACKNOWLEDGEMENTS.md dosyasına
+      bakınız.
+
+5. GARANTİ REDDİ
+   YAZILIM "OLDUĞU GİBİ" SUNULUR; AÇIK VEYA ZIMNİ HİÇBİR GARANTİ VERİLMEZ.
+   Yazılım fiziksel donanımı (servo, tetik mekanizması) kontrol eder.
+   Kullanımdan doğan her türlü maddi zarar, yaralanma veya hukuki
+   sorumluluk kullanıcıya aittir. Telif hakkı sahipleri hiçbir durumda
+   sorumlu tutulamaz.
+
+6. FESİH
+   Bu lisansın herhangi bir koşulunun ihlali, verilen tüm izinleri
+   kendiliğinden ve derhal sona erdirir.
+
+Ticari kullanım veya eğitim dışı kullanım izni için depo sahibiyle GitHub
+üzerinden iletişime geçiniz: https://github.com/KodAlp
+
+===============================================================================
+ENGLISH (for reference; in case of conflict the Turkish text prevails)
+===============================================================================
+
+1. DEFINITIONS
+   "Software" means the source code, Arduino firmware, configuration files,
+   documentation in this repository and any derivative work, including
+   trained model weights.
+   "Educational Use" means use for learning, teaching, coursework, theses,
+   academic research and preparation for non-profit student competitions.
+
+2. GRANT
+   Subject to the conditions below, permission is granted free of charge to
+   view, download, run, study and modify the Software solely for
+   Educational Use.
+
+3. RESTRICTIONS
+   Without prior written permission from the copyright holder you may not:
+   a) use the Software, in whole or in part, for any commercial purpose,
+      including selling, renting, sublicensing, or including it in any paid
+      product, service, consultancy or training;
+   b) use the Software for any purpose other than Educational Use, including
+      military, operational, corporate or production use;
+   c) present the Software or its derivatives as your own work in another
+      competition or project;
+   d) redistribute modified or unmodified copies without this license or
+      under a different license.
+
+4. CONDITIONS
+   a) This license and the copyright notice above must be retained in all
+      copies or substantial portions of the Software.
+   b) Academic or educational work that benefits from the Software must
+      credit the Tulpar AI Team and this repository.
+   c) Third-party components the Software depends on (e.g. Ultralytics
+      YOLO — AGPL-3.0) remain under their own licenses; this license grants
+      no rights over them. See ACKNOWLEDGEMENTS.md.
+
+5. DISCLAIMER OF WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED. The Software controls physical hardware (servos, trigger
+   mechanism). The user bears all responsibility for any damage, injury or
+   legal liability arising from its use. In no event shall the copyright
+   holders be liable.
+
+6. TERMINATION
+   Any breach of these terms automatically and immediately terminates all
+   permissions granted.
+
+For commercial or non-educational licensing, contact the repository owner
+via GitHub: https://github.com/KodAlp

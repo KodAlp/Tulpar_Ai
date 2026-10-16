@@ -2,8 +2,8 @@
 Roboflow veri seti indirme aracı - ÇELİKKUBBE eğitim verisini Roboflow'dan çeker.
 
 Kullanım:
-  1) Aşağıdaki yer tutucu alanları doldurun (API_KEY / WORKSPACE / PROJECT / VERSION).
-     API anahtarını bir ortam değişkeni olarak da verebilirsiniz:  ROBOFLOW_API_KEY
+  1) Aşağıdaki yer tutucu alanları doldurun (WORKSPACE / PROJECT / VERSION).
+     API anahtarını ROBOFLOW_API_KEY ortam değişkeniyle (veya --api-key) verin.
   2)  pip install roboflow          # (requirements.txt'e eklendi)
   3)  python tools/roboflow_download.py
      İsterseniz önce bir deneme klasörüne indirip inceleyin:
@@ -28,9 +28,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # ---------------------------------------------------------------------------
 # YER TUTUCU ALANLAR - Roboflow projenize göre doldurun.
-# (API anahtarı hem buraya hem ROBOFLOW_API_KEY ortam değişkenine verilebilir)
+# API anahtarı GİZLİDİR: koda yazmayın, ROBOFLOW_API_KEY ortam değişkeniyle
+# ya da --api-key argümanıyla verin (https://app.roboflow.com/settings/api).
 # ---------------------------------------------------------------------------
-API_KEY = "YOUR_API_KEY"          # https://app.roboflow.com/settings/api
 WORKSPACE = "kodalp"      # Roboflow çalışma alanı adı (URL'deki kısım)
 PROJECT = "air-defense-szgowT"          # Roboflow proje adı (URL'deki kısım)
 VERSION = 1                       # Proje sürüm numarası (int)
@@ -44,11 +44,8 @@ def _resolve_api_key() -> str:
     env = os.environ.get("ROBOFLOW_API_KEY", "").strip()
     if env:
         return env
-    if API_KEY and API_KEY != "YOUR_API_KEY":
-        return API_KEY
     print("HATA: Roboflow API anahtarı verilmedi.")
-    print("  Ya tools/roboflow_download.py içindeki API_KEY'i doldurun")
-    print("  Ya da ROBOFLOW_API_KEY ortam değişkenini tanımlayın.")
+    print("  ROBOFLOW_API_KEY ortam değişkenini tanımlayın veya --api-key verin.")
     sys.exit(1)
 
 

@@ -37,3 +37,33 @@ veri/labels/val/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Üçüncü taraf AI asistan skill'leri / yerel araç ayarları (public repoya dahil değil)
+.agents/
+.claude/
+skills/
+skills-lock.json
+
+# Gizli bilgiler (API anahtarları vb.)
+.env
+.env.*
+*.key
+*.pem
+
+# Görseller / videolar / arşivler (repoya hiçbir medya dosyası yüklenmez)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.webp
+*.tif
+*.tiff
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+*.rar
+*.7z
+runs/
